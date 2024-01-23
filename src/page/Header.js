@@ -1,7 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 export default function Header() {
-
+    const handleLogoutClick = () => {
+       
+        localStorage.clear();
+    
+        window.location.reload();
+      };
     return (
         <>
             <style>
@@ -111,18 +116,20 @@ export default function Header() {
                             <li className="nav-item">
                                 <div className="navbar-hamburger d-lg-none d-xl-none ml-auto"><button className="hamburger animate plain" data-toggle="offcanvas-nav"><span></span></button></div>
                             </li>
-                            {/* @if(empty(Session::get('id'))) */}
-                            <li className="nav-item d-none d-lg-block pl-0">
-                                <Link to="/login" className="btn btn-default m-0">Login</Link>
+                                {localStorage.getItem('token') ? (
+                                    <li className="nav-item d-none d-lg-block pl-0">
+                                    <font className="user_details">
+                                        {/* <img className="img-responsive user_profile_img profile_image" src="/assets/image/noImage.png" /> */}
+                                        Hi, <strong> { localStorage.getItem('username')}</strong> 
+                                    </font>
+                                    <a href="#" className="btn btn-danger m-0" onClick={handleLogoutClick}>Logout</a>
                                 </li>
-                            {/* @else
-                            <li className="nav-item d-none d-lg-block pl-0">
-                                <font className="user_details">
-                                    <img className="img-responsive user_profile_img profile_image" src="/assets/image/noImage.png" />
-                                    Hi, <strong> Jahid  {{ session()-> get('full_name')}}</strong> 
-                                </font>
-                                <a href="#" className="btn btn-danger m-0">Logout</a></li>
-                            @endif */}
+                                ) : (
+                                    <li className="nav-item d-none d-lg-block pl-0">
+                                         <Link to="/login" className="btn btn-default m-0">Login</Link>
+                                    </li>
+                                )}
+                           
                             <li className="nav-item"><button className="plain" data-toggle="offcanvas-info"><i className="jam jam-info"></i></button></li>
                         </ul>
                         {/* <!-- /.navbar-nav --> */}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 // import FooterTwo from "./FooterTwo";
 import Footer from "./Footer";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
     const [full_name, setName] = useState('')
@@ -14,9 +14,9 @@ export default function Register() {
     const [c_password, setCPassword] = useState('')
     const onSubmit = (e) => {
         e.preventDefault();
-        
-      };
-      const sendRegisterRequest=()=>{
+
+    };
+    const sendRegisterRequest = () => {
         axios.post('http://127.0.0.1:8000/api/register', {
             full_name: full_name,
             username: username,
@@ -24,19 +24,28 @@ export default function Register() {
             phone: phone,
             password: password,
             c_password: c_password,
-          })
-          .then(function (response) {
-            setName('')
-            setUserName('') 
-            setPhone('') 
-            setEmail('') 
-            setPassword('') 
-            setCPassword('') 
-            
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        })
+            .then(function (response) {
+                const token = response.data.success.token
+                const username = response.data.success.username
+
+                localStorage.setItem('token', token)
+                localStorage.setItem('username', username)
+                window.location.reload()
+                alert('registration successful')
+
+                setName('')
+                setUserName('')
+                setPhone('')
+                setEmail('')
+                setPassword('')
+                setCPassword('')
+
+            })
+
+            .catch(function (error) {
+                alert('something went wrong, please try again')
+            });
     }
     return (
         <>
@@ -65,40 +74,40 @@ export default function Register() {
 
                                 <div className="form-group">
                                     <label for="register_name">Your Name</label>
-                                    <input type="text" name="full_name" id="register-name" className="form-control" placeholder="Enter your full Name" onChange={(e)=>setName(e.target.value)} value={full_name}/>
+                                    <input type="text" name="full_name" id="register-name" className="form-control" placeholder="Enter your full Name" onChange={(e) => setName(e.target.value)} value={full_name} />
                                 </div>
                                 <div className="form-group">
                                     <label for="register_name">User Name</label>
-                                    <input type="text" name="username" id="register-name" className="form-control" placeholder="Enter your user name" onChange={(e)=>setUserName(e.target.value)} value={username}/>
+                                    <input type="text" name="username" id="register-name" className="form-control" placeholder="Enter your user name" onChange={(e) => setUserName(e.target.value)} value={username} />
                                 </div>
                                 <div className="form-group">
                                     <label for="phone">Your Phone</label>
-                                    <input type="text" name="phone" id="phone" className="form-control" 
-                                        placeholder="Enter your phone number" onChange={(e)=>setPhone(e.target.value)} value={phone}/>
+                                    <input type="text" name="phone" id="phone" className="form-control"
+                                        placeholder="Enter your phone number" onChange={(e) => setPhone(e.target.value)} value={phone} />
                                 </div>
 
                                 <div className="form-group">
                                     <label for="email">Your Email</label>
-                                    <input type="email" name="email" id="email" className="form-control" 
-                                        placeholder="Enter your email address" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+                                    <input type="email" name="email" id="email" className="form-control"
+                                        placeholder="Enter your email address" onChange={(e) => setEmail(e.target.value)} value={email} />
                                 </div>
 
                                 <div className="form-group">
                                     <label for="password">Your Password</label>
-                                    <input type="password" name="password" id="password" className="form-control" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+                                    <input type="password" name="password" id="password" className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
                                 </div>
 
                                 <div className="form-group">
                                     <label for="confirm_password">Confirm Password</label>
                                     <input type="password" name="c_password" id="confirm_password" className="form-control"
-                                        placeholder="Confirm Password" onChange={(e)=>setCPassword(e.target.value)} value={c_password}/>
+                                        placeholder="Confirm Password" onChange={(e) => setCPassword(e.target.value)} value={c_password} />
                                 </div>
 
-                                <div className="form-group form-group--submit"> <button className="btn btn-default btn-lg btn-block"  onClick={sendRegisterRequest}>Create Your
+                                <div className="form-group form-group--submit"> <button className="btn btn-default btn-lg btn-block" onClick={sendRegisterRequest}>Create Your
                                     Account</button> </div>
                             </form>
 
-                            <p style={{textAlign: 'center'}}>Already Registered ?
+                            <p style={{ textAlign: 'center' }}>Already Registered ?
                                 <Link to="/Login">Login</Link>
                                 Now</p>
 

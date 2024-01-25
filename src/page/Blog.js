@@ -3,9 +3,10 @@ import Header from "./Header";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Preloader from "./Preloader";
+import {Link} from 'react-router-dom';
 export default function Blog() {
     const [Blogs, setBlogs] = useState([])
-    const [busy, setBusy] = useState(true)
+    const [busy, setBusy] = useState(true);
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/blog-short')
             .then(response => response.json())
@@ -37,23 +38,27 @@ export default function Blog() {
                                 {Blogs ? (
                                     Blogs.map((v, i) => (
                                         <div className="item post grid-sizer col-md-6 col-lg-4 p-3" key={i}>
-                                            <a href="#">
-                                                <figure className="overlay overlay1 rounded mb-30"><a href="#"><span
-                                                    className="bg"></span> <img src={'http://127.0.0.1:8000/uploads/blog/' + v.thumbnail} alt="" width="360px" height="240px" /></a>
+
+                                            <Link to={`/blog-details/${v.id}`} >
+                                                <figure className="overlay overlay1 rounded mb-30">
+                                                <Link to={`/blog-details/${v.id}`} >
+                                                        <span className="bg"></span> <img src={'http://127.0.0.1:8000/uploads/blog/' + v.thumbnail} alt="" width="360px" height="240px" />
+                                                        </Link>
                                                     <figcaption>
                                                         <h5 className="from-top mb-0">Read More</h5>
                                                     </figcaption>
                                                 </figure>
-                                            </a>
-                                            <div className="category"><a href="#"
-                                                className="badge badge-pill bg-purple">{v.category}</a>
+                                            </Link>
+                                            <div className="category">
+                                                <a href="#" className="badge badge-pill bg-purple">{v.category}</a>
                                             </div>
-                                            <h2  className="post-title"><a href="#">{v.blogtitle}</a>
+                                            <h2 className="post-title">
+                                                <Link to={`/blog-details/${v.id}`} >{v.blogtitle}</Link>
                                             </h2>
                                             <div className="post-content">
-                                                <p>This is short details </p>   
+                                                <p>This is short details </p>
                                             </div>
-                                            <div className="meta mb-0"><span className="date"><i className="jam jam-clock"></i>2024-01-20</span></div>
+                                            <div className="meta mb-0"><span className="date"><i className="jam jam-clock"></i>{v.date}</span></div>
                                         </div>
                                     ))
                                 ) : (

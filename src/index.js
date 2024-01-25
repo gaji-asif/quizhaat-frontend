@@ -10,6 +10,7 @@ import ContactUs from './page/ContactUs';
 import Blog from './page/Blog';
 import Login from './page/Login';
 import Register from './page/Register';
+import BlogDetails from './page/BlogDetails';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
@@ -24,6 +25,7 @@ root.render(
       <Route path='/blogs' element={<Blog />}></Route>
       <Route path='/login' element={<Login />}></Route>
       <Route path='/register' element={<Register />}></Route>
+      <Route path='/blog-details/:id' element={<BlogDetails />}></Route>
     </Routes>
 
   </BrowserRouter>

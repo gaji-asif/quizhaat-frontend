@@ -23,6 +23,11 @@ export default function BlogDetails() {
             .then(data => setBlogDetails(data.blogs))
             .then(() => setBusy(false));
     }, [id]);
+    const stripHtmlTags = (htmlString) => {
+        const doc = new DOMParser().parseFromString(htmlString, 'text/html');
+        return doc.body.textContent || "";
+      };
+      const strippedDetails = stripHtmlTags(blogDetails.details);
     if (busy) {
         return <Preloader />
     } else {
@@ -57,7 +62,7 @@ export default function BlogDetails() {
                                                         {blogDetails.created_by} {/* {{ isset($blog-> createdUser) ? $blog->createdUser->full_name : '' }} */}
                                                     </a></span>
                                             </div>
-                                            {blogDetails.details}
+                                            {strippedDetails}
                                         </div>
                                     </div>
                                 </div>

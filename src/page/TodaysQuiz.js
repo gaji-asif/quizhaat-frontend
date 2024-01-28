@@ -3,10 +3,14 @@ import Header from "./Header";
 // import FooterTwo from "./FooterTwo";
 import Footer from "./Footer";
 import Preloader from "./Preloader";
+import axios from "axios";
 export default function TodaysQuiz() {
 
     const [dailyQuiz, setDailyQuiz] = useState([])
     const [busy, setBusy] = useState(true)
+    const [userID, setUserId] = useState('')
+    const [set_user_answer_id, setUserAnswerId] = useState('')
+    const [quistion_id, setQuistionId] = useState('')
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/daily-quize')
             .then(response => response.json())
@@ -14,6 +18,23 @@ export default function TodaysQuiz() {
             .then(() => setBusy(false))
 
     }, [])
+
+    const sendRegisterRequest = () => {
+        axios.post('http://127.0.0.1:8000/api/submit-quize-answer', {
+            set_user_answer_id: set_user_answer_id,
+            quistion_id: quistion_id,
+            userID: userID,
+        })
+            .then(function (response) {
+
+                setUserAnswerId('')
+                setQuistionId('')
+            })
+
+            .catch(function (error) {
+                alert('something went wrong, please try again')
+            });
+    }
     if (busy) {
         return <Preloader />
     } else {
@@ -87,9 +108,10 @@ export default function TodaysQuiz() {
                                                         {dailyQuiz && dailyQuiz.question_id && dailyQuiz.options ? (
                                                             dailyQuiz.options.map((v, i) => (
                                                                 <div className="col-lg-6 col-sm-12" key={i}>
+                                                                    <input type="hidden" onChange={(e) => setQuistionId(e.target.value)} value={v.question_id} />
                                                                     <button type="button" className="btn btn-warning btn-block ans_btn">
                                                                         <span id={`quiz_ans_${i + 1}`}>{v.option}</span>
-                                                                        <input type="radio" name="options" id={`option${i + 1}`} autoComplete="off" value={v.option_id} />
+                                                                        <input type="radio" name="options" id={`option${i + 1}`} autoComplete="off" onChange={(e) => setUserAnswerId(e.target.value)} value={v.option_id} />
                                                                     </button>
                                                                 </div>
                                                             ))
@@ -97,7 +119,15 @@ export default function TodaysQuiz() {
                                                             <p>Loading or no data available</p>
                                                         )}
                                                     </div>
-                                                    <button className="btn btn-success btn-block ans_btn text-center col-lg-3 mt-4 submit_btn " data-toggle="modal" data-target="#exampleModal" >Submit</button>
+                                                    {localStorage.getItem('token') ? (
+                                                        <>
+                                                            <input type="hidden" onChange={(e) => setUserId(e.target.value)} value={localStorage.getItem('userid')} />
+                                                            <button className="btn btn-success btn-block ans_btn text-center col-lg-3 mt-4 submit_btn " data-toggle="modal" data-target="#exampleModal" >Submit</button>
+                                                        </>
+                                                    ) : (
+                                                        <button className="btn btn-success btn-block ans_btn text-center col-lg-3 mt-4 submit_btn " data-toggle="modal" data-target="#exampleModal" disabled>Login First</button>
+                                                    )}
+
 
                                                     <div className=" col-sm-12">
                                                         <p className="quiz_message" ></p>

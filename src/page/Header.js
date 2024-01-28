@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function Header() {
     const handleLogoutClick = () => {
-       
+
         localStorage.clear();
-    
+
         window.location.reload();
-      };
+    };
     return (
         <>
             <style>
@@ -108,28 +108,28 @@ export default function Header() {
             <nav className="navbar absolute transparent navbar-expand-lg nav-uppercase">
                 <div className="container flex-row justify-content-center">
                     <div className="navbar-brand">
-                    <Link to="/" className="nav-link"><img src="" srcset="/assets/style/images/main_logo.png 1x, /assets/style/images/main_logo.png 2x" alt="" /></Link>
-                        
+                        <Link to="/" className="nav-link"><img src="" srcset="/assets/style/images/main_logo.png 1x, /assets/style/images/main_logo.png 2x" alt="" /></Link>
+
                     </div>
                     <div className="navbar-other ml-auto order-lg-3">
                         <ul className="navbar-nav flex-row align-items-center" data-sm-skip="true">
                             <li className="nav-item">
                                 <div className="navbar-hamburger d-lg-none d-xl-none ml-auto"><button className="hamburger animate plain" data-toggle="offcanvas-nav"><span></span></button></div>
                             </li>
-                                {localStorage.getItem('token') ? (
-                                    <li className="nav-item d-none d-lg-block pl-0">
+                            {localStorage.getItem('token') ? (
+                                <li className="nav-item d-none d-lg-block pl-0">
                                     <font className="user_details">
                                         {/* <img className="img-responsive user_profile_img profile_image" src="/assets/image/noImage.png" /> */}
-                                        Hi, <strong> { localStorage.getItem('username')}</strong> 
+                                        Hi, <strong> {localStorage.getItem('username')}</strong>
                                     </font>
                                     <a href="#" className="btn btn-danger m-0" onClick={handleLogoutClick}>Logout</a>
                                 </li>
-                                ) : (
-                                    <li className="nav-item d-none d-lg-block pl-0">
-                                         <Link to="/login" className="btn btn-default m-0">Login</Link>
-                                    </li>
-                                )}
-                           
+                            ) : (
+                                <li className="nav-item d-none d-lg-block pl-0">
+                                    <Link to="/login" className="btn btn-default m-0">Login</Link>
+                                </li>
+                            )}
+
                             <li className="nav-item"><button className="plain" data-toggle="offcanvas-info"><i className="jam jam-info"></i></button></li>
                         </ul>
                         {/* <!-- /.navbar-nav --> */}
@@ -152,11 +152,11 @@ export default function Header() {
                             <li className="nav-item dropdown">
                                 {/* <a className="nav-link dropdown-toggle" href="#">আজকের কুইজ</a> */}
                                 <Link to="/todays-quiz" className="nav-link dropdown-toggle">আজকের কুইজ</Link>
-                                </li>
+                            </li>
 
                             <li className="nav-item dropdown">
                                 <Link to="/leader-board" className="nav-link dropdown-toggle">লিডার বোর্ড</Link>
-                                </li>
+                            </li>
 
                             {/* <!--  <li className="nav-item dropdown"><a className="nav-link dropdown-toggle" href="#!">বন্ধুদের সাথে শেয়ার কর</a>
     </li> --> */}
@@ -165,7 +165,7 @@ export default function Header() {
     </li> --> */}
 
                             <li className="nav-item dropdown">
-                            <Link to="/contact-us" className="nav-link dropdown-toggle">যোগাযোগ</Link>
+                                <Link to="/contact-us" className="nav-link dropdown-toggle">যোগাযোগ</Link>
                                 {/* <a className="nav-link dropdown-toggle" href="#">যোগাযোগ</a> */}
                                 {/* <!-- <ul className="dropdown-menu">
         
@@ -179,7 +179,7 @@ export default function Header() {
                             <li className="nav-item dropdown">
                                 {/* <a className="nav-link dropdown-toggle" href="#">ব্লগ</a> */}
                                 <Link to="/blogs" className="nav-link dropdown-toggle">ব্লগ</Link>
-                                </li>
+                            </li>
                         </ul>
                         {/* <!-- /.navbar-nav --> */}
                     </div>

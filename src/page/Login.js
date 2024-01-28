@@ -20,9 +20,10 @@ export default function Login() {
 
         const token = response.data.token;
         const name = response.data.username;
+        const userid = response.data.userid
         localStorage.setItem('token', token);
         localStorage.setItem('username', name);
-
+        localStorage.setItem('userid', userid)
         alert('login successfull')
 
         setEmail('')

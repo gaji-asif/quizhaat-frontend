@@ -28,9 +28,11 @@ export default function Register() {
             .then(function (response) {
                 const token = response.data.success.token
                 const username = response.data.success.username
+                const userid = response.data.success.userid
 
                 localStorage.setItem('token', token)
                 localStorage.setItem('username', username)
+                localStorage.setItem('userid', userid)
                 window.location.reload()
                 alert('registration successful')
 

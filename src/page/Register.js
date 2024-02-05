@@ -26,9 +26,9 @@ export default function Register() {
             c_password: c_password,
         })
             .then(function (response) {
-                const token = response.data.success.token
-                const username = response.data.success.username
-                const userid = response.data.success.userid
+                const token = response.data.data.token
+                const username = response.data.data.username
+                const userid = response.data.data.userid
 
                 localStorage.setItem('token', token)
                 localStorage.setItem('username', username)

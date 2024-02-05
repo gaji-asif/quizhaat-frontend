@@ -17,17 +17,22 @@ export default function Login() {
       password: password,
     })
       .then(function (response) {
+        // console.log(response.data.is_data);
+        if(response.data.is_data == true){
+          const token = response.data.data.token;
+          const name = response.data.data.username;
+          const userid = response.data.data.userid
+          localStorage.setItem('token', token);
+          localStorage.setItem('username', name);
+          localStorage.setItem('userid', userid)
+          alert('login successfull')
 
-        const token = response.data.token;
-        const name = response.data.username;
-        const userid = response.data.userid
-        localStorage.setItem('token', token);
-        localStorage.setItem('username', name);
-        localStorage.setItem('userid', userid)
-        alert('login successfull')
-
-        setEmail('')
-        setPassword('')
+          setEmail('')
+          setPassword('')
+        }else{
+          alert('try again')
+        }
+        
 
       })
       .catch(function (error) {

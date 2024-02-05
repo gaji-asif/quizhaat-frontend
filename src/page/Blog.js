@@ -4,16 +4,26 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Preloader from "./Preloader";
 import {Link} from 'react-router-dom';
+import axios from "axios";
 export default function Blog() {
     const [Blogs, setBlogs] = useState([])
     const [busy, setBusy] = useState(true);
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/blog-short')
             .then(response => response.json())
-            .then(data => setBlogs(data.blogs))
+            .then(data => setBlogs(data.data))
             .then(() => setBusy(false))
 
     }, [])
+    // axios.get('http://127.0.0.1:8000/api/blog-short')
+    // .then(function (response) {
+    //     console.log(response);
+    //     setBlogs(response.data.data)
+    // })
+    // .then(function(response) {
+    //     setBusy(false)
+    // })
+    console.log(Blogs);
     if (busy) {
         return <Preloader />
     } else {

@@ -11,13 +11,16 @@ export default function TodaysQuiz() {
     const [userID, setUserId] = useState('')
     const [set_user_answer_id, setUserAnswerId] = useState('')
     const [quistion_id, setQuistionId] = useState('')
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/daily-quiz')
-            .then(response => response.json())
-            .then(data => setDailyQuiz(data.data))
-            .then(() => setBusy(false))
+    // useEffect(() => {
+    //     fetch('http://127.0.0.1:8000/api/daily-quiz')
+    //         .then(response => response.json())
+    //         .then(data => setDailyQuiz(data.data))
+    //         .then(() => setBusy(false))
 
-    }, [])
+    // }, [])
+    axios.get('http://127.0.0.1:8000/api/daily-quiz')
+    .then(data => setDailyQuiz(data.data))
+    .then(() => setBusy(false))
     const onSubmit = (e) => {
         e.preventDefault();
     };
@@ -115,7 +118,7 @@ export default function TodaysQuiz() {
                                         </div>
                                         <div className="card col-lg-9">
                                             {/* <!-- <h5 className="card-header">Featured</h5> --> */}
-                                            {dailyQuiz ? (
+                                            {dailyQuiz && dailyQuiz.is_data == true ? (
                                                 <div className="card-body text-center">
                                                     <h5 className="margin_bottom_0" >কুইজ নং -<span id="quiz_number">{dailyQuiz.question_id}</span></h5>
                                                     <p className="margin_bottom_0" id="quiz_date">{dailyQuiz.date}</p>

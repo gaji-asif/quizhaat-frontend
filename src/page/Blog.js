@@ -16,14 +16,9 @@ export default function Blog() {
 
     }, [])
     // axios.get('http://127.0.0.1:8000/api/blog-short')
-    // .then(function (response) {
-    //     console.log(response);
-    //     setBlogs(response.data.data)
-    // })
-    // .then(function(response) {
-    //     setBusy(false)
-    // })
-    console.log(Blogs);
+    // .then(data => setBlogs(data.data))
+    // .then(() => setBusy(false))
+    // console.log(typeof(Blogs));
     if (busy) {
         return <Preloader />
     } else {

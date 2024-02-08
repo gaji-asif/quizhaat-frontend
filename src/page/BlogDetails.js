@@ -13,7 +13,7 @@ export default function BlogDetails() {
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/blog-short')
             .then(response => response.json())
-            .then(data => setBlogs(data.blogs))
+            .then(data => setBlogs(data.data))
             .then(() => setBusy(false))
 
     }, [])
@@ -21,7 +21,7 @@ export default function BlogDetails() {
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/api/blog-details/${id}`)
             .then(response => response.json())
-            .then(data => setBlogDetails(data.blogs))
+            .then(data => setBlogDetails(data.data))
             .then(() => setBusy(false));
     }, [id]);
     const stripHtmlTags = (htmlString) => {

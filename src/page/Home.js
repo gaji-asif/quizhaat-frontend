@@ -1,8 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Home() {
-    
+const Home = () => {
     return (
         <>
                 {/* // @include('web.partials.header') */}
@@ -251,3 +250,5 @@ export default function Home() {
         </>
     );
 }
+
+export default Home ;  

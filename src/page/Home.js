@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Home() {
+const Home = () => {
     
     return (
         <>
@@ -251,3 +251,5 @@ export default function Home() {
         </>
     );
 }
+
+export default Home ;

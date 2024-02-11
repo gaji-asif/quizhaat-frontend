@@ -19,32 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet"  href="%PUBLIC_URL%/assets/style/css/custom_css.css">
-
-
-  <style >
-    label {
-      margin-bottom: 0px;
-    }
-
-    .register_wrapper {
-      margin-top: 30px;
-    }
-
-    .common_wrapper {
-      margin-top: 15%;
-      margin-bottom: 15%;
-    }
-
-    .form-control {
-      border-radius: 5px !important;
-    }
-
-    .profile_image {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-  </style>
+  <link rel="stylesheet"  href="%PUBLIC_URL%/assets/style/css/internal_css.css">
 </head>
 
 <body>
@@ -80,6 +55,11 @@
   <script src="%PUBLIC_URL%/assets/style/js/plugins.js"></script>
   <script src="%PUBLIC_URL%/assets/style/js/scripts.js"></script>
 
+  <!-- 
+    This script executes after the entire webpage has loaded.
+    It gradually fades out elements with class "loader" and ID "overlayer"
+    after a delay of 1.5 seconds, providing a smooth transition from a loading state.
+  -->
   <script>
     $(window).load(function () {
       $(".loader").delay(1500).fadeOut("slow");

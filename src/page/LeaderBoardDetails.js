@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import Preloader from "./Preloader";
 
-const LeaderBoard = () => {
+export default function LeaderBoardDetails() {
     const [Quiz, setQuizList] = useState({});
     const [busy, setBusy] = useState(true);
 
@@ -18,7 +18,6 @@ const LeaderBoard = () => {
     if (busy) {
         return <Preloader />
     } else {
-
     return (
         <>
             <Header />
@@ -26,7 +25,7 @@ const LeaderBoard = () => {
                 <div className="rev_slider_wrapper fullwidth-container dark-spinner">
                     <div className="container inner text-center">
                         <div className="space40"></div>
-                        <h1 className="page-title">Leader Board</h1>
+                        <h1 className="page-title">Answer Giver List</h1>
                     </div>
                 </div>
             </div>
@@ -36,8 +35,8 @@ const LeaderBoard = () => {
                     <table className="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th style={{ width: '50%' }} className="text-left">Quiz No</th>
-                                <th style={{ width: '50%' }}>Total Correct Answerer</th>
+                                <th style={{ width: '50%' }} className="text-left">User ID</th>
+                                <th style={{ width: '50%' }}>User Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,11 +56,8 @@ const LeaderBoard = () => {
                     </table>
                 </div>
             </div>
-
             <Footer />
         </>
     );
 }
 }
-
-export default LeaderBoard

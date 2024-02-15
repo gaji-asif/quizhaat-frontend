@@ -182,13 +182,7 @@ const Home = () => {
                             {/* <!--/column --> */}
                         </div>
                         {/* <!--/.row --> */}
-
-
-                        {/* <!--/.row --> */}
-
                         <div className="space140"></div>
-
-
                         <div className="gray-wrapper row">
                             <div className="container">
                                 {/* <!--  <h2 className="section-title mb-40 text-center">Boxed Counter with Icons</h2> --> */}

@@ -1,4 +1,4 @@
-export default function Preloader() {
+const Preloader = () => {
     return (
         <>
             <div id="overlayer"></div>
@@ -8,3 +8,4 @@ export default function Preloader() {
         </>
     )
 }
+export default Preloader

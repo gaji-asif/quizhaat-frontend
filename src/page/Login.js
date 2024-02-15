@@ -4,7 +4,7 @@ import Header from "./Header";
 // import FooterTwo from "./FooterTwo";
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const onSubmit = (e) => {
@@ -108,3 +108,4 @@ export default function Login() {
     </>
   )
 }
+export default Login

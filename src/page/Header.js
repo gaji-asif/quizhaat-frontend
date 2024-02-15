@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-export default function Header() {
+const Header = () => {
+
     const handleLogoutClick = () => {
-
         localStorage.clear();
-
         window.location.reload();
     };
     return (
@@ -223,3 +222,5 @@ export default function Header() {
         </>
     );
 }
+
+export default Header

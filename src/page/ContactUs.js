@@ -1,7 +1,8 @@
 import Header from "./Header";
 // import FooterTwo from "./FooterTwo";
 import Footer from "./Footer";
-export default function ContactUs() {
+
+const ContactUs = () => {
     return (
         <>
 
@@ -73,3 +74,4 @@ export default function ContactUs() {
         </>
     )
 }
+export default ContactUs

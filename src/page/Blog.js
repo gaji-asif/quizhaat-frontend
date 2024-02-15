@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Preloader from "./Preloader";
 import {Link} from 'react-router-dom';
 import axios from "axios";
-export default function Blog() {
+const Blog = () => {
     const [Blogs, setBlogs] = useState([])
     const [busy, setBusy] = useState(true);
     useEffect(() => {
@@ -84,3 +84,4 @@ export default function Blog() {
     }
 
 }
+export default Blog

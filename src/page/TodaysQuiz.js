@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Preloader from "./Preloader";
 import axios from "axios";
-export default function TodaysQuiz() {
+const TodaysQuiz = () => {
 
     const [dailyQuiz, setDailyQuiz] = useState([])
     const [busy, setBusy] = useState(true)
@@ -183,5 +183,5 @@ export default function TodaysQuiz() {
             </>
         )
     }
-
 }
+export default TodaysQuiz

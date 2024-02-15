@@ -5,7 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
 
-export default function Register() {
+const Register = () => {
     const [full_name, setName] = useState('')
     const [username, setUserName] = useState('')
     const [email, setEmail] = useState('')
@@ -125,3 +125,4 @@ export default function Register() {
         </>
     )
 }
+export default Register

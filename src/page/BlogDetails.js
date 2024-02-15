@@ -5,7 +5,8 @@ import Footer from "./Footer";
 import Preloader from "./Preloader";
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-export default function BlogDetails() {
+const BlogDetails = () => {
+
     const [Blogs, setBlogs] = useState([])
     const [busy, setBusy] = useState(true)
     const { id } = useParams();
@@ -147,5 +148,5 @@ export default function BlogDetails() {
             </>
         )
     }
-
 }
+export default BlogDetails

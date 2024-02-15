@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-export default function Footer() {
+const Footer = () => {
     return (
         <>
             <footer className="white-wrapper">
@@ -78,3 +78,4 @@ export default function Footer() {
         </>
     );
 }
+export default Footer

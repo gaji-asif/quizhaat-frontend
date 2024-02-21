@@ -112,7 +112,6 @@ const Register = () => {
                             <p style={{ textAlign: 'center' }}>Already Registered ?
                                 <Link to="/Login">Login</Link>
                                 Now</p>
-
                         </div>
                         <div className="col-md-3"></div>
                     </div>

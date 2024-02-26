@@ -18,7 +18,6 @@ const BlogDetails = () => {
             .then(() => setBusy(false))
 
     }, [])
-    console.log(Blogs);
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/api/blog-details/${id}`)
             .then(response => response.json())

@@ -1,6 +1,8 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
+import '../style/css/header.css';
 const Header = () => {
+
 
     const handleLogoutClick = () => {
         localStorage.clear();
@@ -8,97 +10,6 @@ const Header = () => {
     };
     return (
         <>
-            <style>
-                {`
-        .profile_image{
-            width: 40px;
-        height: 40px;
-        border-radius: 50%;
-}
-    </style>
-    <style>
-        body, html {
-            height: 100%;
-        width:100%;
-        margin:0;
-        padding:0;
-        position:relative;
-  }
-
-        /*PRELOADING------------ */
-        #overlayer {
-            width:100%;
-        height:100%;
-        position:absolute;
-        z-index:1;
-        background:white;
-  }
-        .loader {
-            display: inline-block;
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        z-index:3;
-        border: 4px solid gray;
-        top: 50%;
-        left: 50%;
-        animation: loader 2s infinite ease;
-  }
-
-        .loader-inner {
-            vertical - align: top;
-        display: inline-block;
-        width: 100%;
-        background-color: gray;
-        animation: loader-inner 2s infinite ease-in;
-
-  }
-
-        @keyframes loader {
-            0 % {
-                transform: rotate(0deg);
-            }
-      
-      25% {
-            transform: rotate(180deg);
-      }
-
-        50% {
-            transform: rotate(180deg);
-      }
-
-        75% {
-            transform: rotate(360deg);
-      }
-
-        100% {
-            transform: rotate(360deg);
-      }
-  }
-
-        @keyframes loader-inner {
-            0 % {
-                height: 0 %;
-            }
-      
-      25% {
-            height: 0%;
-      }
-
-        50% {
-            height: 100%;
-      }
-
-        75% {
-            height: 100%;
-      }
-
-        100% {
-            height: 0%;
-      }
-  }
-  `}
-            </style>
             {/* <div id="overlayer"></div>
     <span className="loader">
         <span className="loader-inner"></span>
@@ -107,7 +18,7 @@ const Header = () => {
             <nav className="navbar absolute transparent navbar-expand-lg nav-uppercase">
                 <div className="container flex-row justify-content-center">
                     <div className="navbar-brand">
-                        <Link to="/" className="nav-link"><img src="" srcset="/assets/style/images/main_logo.png 1x, /assets/style/images/main_logo.png 2x" alt="" /></Link>
+                        <Link to="/" className="nav-link homeIcon"><img src="" srcset="/assets/style/images/main_logo.png 1x, /assets/style/images/main_logo.png 2x" alt="" /></Link>
 
                     </div>
                     <div className="navbar-other ml-auto order-lg-3">

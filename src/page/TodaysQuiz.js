@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Preloader from "./Preloader";
+import Swal from 'sweetalert2';
+import '../style/css/today_quiz.css';
 
 const TodaysQuizs = () => {
   const [dailyQuiz, setDailyQuiz] = useState({});
@@ -15,7 +17,7 @@ const TodaysQuizs = () => {
     fetch('http://127.0.0.1:8000/api/daily-quiz')
       .then(response => response.json())
       .then(data => {
-        console.log("API Response:", data); // Log the API response for debugging
+      // Log the API response for debugging
         if (data.is_data) {
           setDailyQuiz(data.data);
         } else {
@@ -58,10 +60,20 @@ const TodaysQuizs = () => {
         if (data.status == "true") {
           //  localStorage.setItem('isSubmitted', "true")
           alert('quiz answer submitted successfully')
+          Swal.fire({
+            title: "Good job!",
+            text: "quiz answer submitted successfully",
+            icon: "success"
+          });
         }
         if (data.status == "false" && data.message == "already given") {
           // localStorage.setItem('isSubmitted', "true")
-          alert('you already submitted')
+          Swal.fire({
+            title: " you already submitted ",
+            text: "Try next day!",
+            icon: "error"
+          });
+          // sweet alert TODO::
         }
         setUserAnswerId('');
         setQuestionId('');
@@ -77,33 +89,6 @@ const TodaysQuizs = () => {
     return (
       <>
         <Header />
-        <style>
-          {`
-                .btn.active, .btn:active {
-                    opacity: 1.1;
-                    background-color: #f5f5f5;
-                    color: #000000;
-                    font-weight: bold;
-                    }input {
-            
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    }
-            
-                    .page-item.active .page-link {
-                    z-index: 10 !important;
-                
-                    }
-                    /* .hide{
-                    display: none;
-                    }
-                    .show{
-                    
-                    } */
-                  `}
-
-        </style>
         <div className="wrapper light-wrapper">
           <div className="container">
             <div className="row">

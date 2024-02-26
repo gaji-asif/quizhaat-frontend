@@ -4,6 +4,7 @@ import Header from "./Header";
 // import FooterTwo from "./FooterTwo";
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,18 +26,30 @@ const Login = () => {
           localStorage.setItem('token', token);
           localStorage.setItem('username', name);
           localStorage.setItem('userid', userid)
-          alert('login successfull')
+          Swal.fire({
+            title: "Good job!",
+            text: "login successful",
+            icon: "success"
+          });
 
           setEmail('')
           setPassword('')
         }else{
-          alert('try again')
+          Swal.fire({
+            title: "please try again",
+            text: "something went wrong",
+            icon: "error"
+          });
         }
         
 
       })
       .catch(function (error) {
-        alert("login failed, please try again")
+        Swal.fire({
+          title: "please try again",
+          text: "something went wrong",
+          icon: "error"
+        });
       });
   }
   return (

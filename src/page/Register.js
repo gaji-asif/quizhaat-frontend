@@ -4,6 +4,7 @@ import Header from "./Header";
 // import FooterTwo from "./FooterTwo";
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const [full_name, setName] = useState('')
@@ -34,7 +35,11 @@ const Register = () => {
                 localStorage.setItem('username', username)
                 localStorage.setItem('userid', userid)
                 window.location.reload()
-                alert('registration successful')
+                Swal.fire({
+                    title: "Good job!",
+                    text: "registration successful",
+                    icon: "success"
+                  });
 
                 setName('')
                 setUserName('')
@@ -46,7 +51,11 @@ const Register = () => {
             })
 
             .catch(function (error) {
-                alert('something went wrong, please try again')
+                Swal.fire({
+                    title: "please try again",
+                    text: "something went wrong, please try again",
+                    icon: "error"
+                  });
             });
     }
     return (

@@ -48,7 +48,7 @@ const Blog = () => {
                                                 <figure className="overlay overlay1 rounded mb-30">
                                                 <Link to={`/blog-details/${v.id}`} >
                                                         <span className="bg"></span> <img src={'http://127.0.0.1:8000/uploads/blog/' + v.thumbnail} alt="" width="360px" height="240px" />
-                                                        </Link>
+                                                    </Link>
                                                     <figcaption>
                                                         <h5 className="from-top mb-0">Read More</h5>
                                                     </figcaption>

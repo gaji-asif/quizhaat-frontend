@@ -2,19 +2,19 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import Preloader from "./Preloader";
+import { useParams } from 'react-router-dom';
 
 export default function LeaderBoardDetails() {
-    const [Quiz, setQuizList] = useState({});
+    const [Quiz, setQuizListDetails] = useState({});
     const [busy, setBusy] = useState(true);
+    const { id } = useParams();
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/all-quiz-answer-list')
+        fetch(`http://127.0.0.1:8000/api/quiz-answer-giver-list/${id}`)
             .then(response => response.json())
-            .then(data => setQuizList(data.data))
-            .catch(error => console.error('Error fetching data:', error))
-            .finally(() => setBusy(false));
-
-    }, []);
+            .then(data => setQuizListDetails(data.data))
+            .then(() => setBusy(false));
+    }, [id]);
     if (busy) {
         return <Preloader />
     } else {
@@ -42,10 +42,12 @@ export default function LeaderBoardDetails() {
                         <tbody>
                             {Object.keys(Quiz).length > 0 ? (
                                 Object.keys(Quiz).map(quizNumber => (
+                                    <>
                                     <tr key={quizNumber}>
-                                        <td style={{ width: '50%' }} className="text-left">{Quiz[quizNumber].quiz_number}</td>
-                                        <td style={{ width: '50%' }}><a href="#">{Quiz[quizNumber].total_correct_answers}</a></td>
+                                        <td style={{ width: '50%' }} className="text-left">{Quiz[quizNumber].user_id}</td>
+                                        <td style={{ width: '50%' }}>{Quiz[quizNumber].full_name}</td>
                                     </tr>
+                                    </>
                                 ))
                             ) : (
                                 <tr>

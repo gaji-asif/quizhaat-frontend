@@ -1,0 +1,22 @@
+.btn.active, .btn:active {
+    opacity: 1.1;
+    background-color: #f5f5f5;
+    color: #000000;
+    font-weight: bold;
+    }input {
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    }
+
+    .page-item.active .page-link {
+    z-index: 10 !important;
+
+    }
+    /* .hide{
+    display: none;
+    }
+    .show{
+    
+    } */

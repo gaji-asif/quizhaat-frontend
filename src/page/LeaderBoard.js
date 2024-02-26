@@ -2,6 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import Preloader from "./Preloader";
+import { Link } from "react-router-dom";
 
 const LeaderBoard = () => {
     const [Quiz, setQuizList] = useState({});
@@ -19,49 +20,58 @@ const LeaderBoard = () => {
         return <Preloader />
     } else {
 
-    return (
-        <>
-            <Header />
-            <div className="wrapper bg-opacity-default">
-                <div className="rev_slider_wrapper fullwidth-container dark-spinner">
-                    <div className="container inner text-center">
-                        <div className="space40"></div>
-                        <h1 className="page-title">Leader Board</h1>
+        return (
+            <>
+                <Header />
+                <div className="wrapper bg-opacity-default">
+                    <div className="rev_slider_wrapper fullwidth-container dark-spinner">
+                        <div className="container inner text-center">
+                            <div className="space40"></div>
+                            <h1 className="page-title">Leader Board</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="wrapper white-wrapper">
-                <div className="container inner">
-                    <table className="table table-bordered data-table">
-                        <thead>
-                            <tr>
-                                <th style={{ width: '50%' }} className="text-left">Quiz No</th>
-                                <th style={{ width: '50%' }}>Total Correct Answerer</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.keys(Quiz).length > 0 ? (
-                                Object.keys(Quiz).map(quizNumber => (
-                                    <tr key={quizNumber}>
-                                        <td style={{ width: '50%' }} className="text-left">{Quiz[quizNumber].quiz_number}</td>
-                                        <td style={{ width: '50%' }}><a href="#">{Quiz[quizNumber].total_correct_answers}</a></td>
-                                    </tr>
-                                ))
-                            ) : (
+                <div className="wrapper white-wrapper">
+                    <div className="container inner">
+                        <table className="table table-bordered data-table">
+                            <thead>
                                 <tr>
-                                    <td colSpan="2">Loading or no data available</td>
+                                    <th style={{ width: '50%' }} className="text-left">Quiz No</th>
+                                    <th style={{ width: '50%' }}>Total Correct Answerer</th>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                            </thead>
+                            <tbody>
+                                {Object.keys(Quiz).length > 0 ? (
+                                    Object.keys(Quiz).map(quizNumber => {
+                                        const quizDetails = Quiz[quizNumber];
+                                        const quizId = quizDetails.quiz_number;
 
-            <Footer />
-        </>
-    );
-}
+                                        return (
+                                            <tr key={quizNumber}>
+                                                <td style={{ width: '50%' }} className="text-left">{quizId}</td>
+                                                <td style={{ width: '50%' }}>
+                                                    <Link to={`/leader-board-details/${quizId}`} >
+                                                        {quizDetails.total_correct_answers}
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                ) : (
+                                    <tr>
+                                        <td colSpan="2">Loading or no data available</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <Footer />
+            </>
+        );
+    }
 }
 
 export default LeaderBoard

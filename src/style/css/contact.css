@@ -1,0 +1,11 @@
+.error {
+    font-weight: bold;
+    color: red;
+    margin-left: 20px;
+    margin-top: -20px;
+}
+
+.inner {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
